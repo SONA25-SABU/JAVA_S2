@@ -1,58 +1,64 @@
-//Implement the concept of Class, Data members, Methods, Access Specifier,  Default Constructor, Method Overloading (minimum 3 methods), Constructor overloading (minimum of 2) in your selected domain.
-//Class comments
+public class LAB_1 {
+    private String jobTitle;
+    private double salary;
+    private String company;
+    private String location;
 
-import java.util.*;
-
-class Job {                            // Create a class
-    public String jobTitle;            // Data members
-    private int salary = 0;
-    String company;
-    String location;
-
-    Job() {                            // Default Constructor
-        jobTitle = "Software Developer";
-        salary = 80000;
-        company = "Tech Corp";
-        location = "New York";
+    LAB_1() {
+        this.jobTitle = "Software Developer";
+        this.salary = 80000;
+        this.company = "Tech Corp";
+        this.location = "New York";
     }
 
-    Job(String title, int salary, String companyName, String jobLocation) {        //  Constructor with method overloading
-        jobTitle = title;
+    LAB_1(String jobTitle, double salary, String company, String location) {
+        this.jobTitle = jobTitle;
         this.salary = salary;
-        company = companyName;
-        location = jobLocation;
+        this.company = company;
+        this.location = location;
     }
 
-    public void displayJobDetails() {                         
+    LAB_1(String jobTitle, long salary, String company, String location) {
+        this.jobTitle = jobTitle;
+        this.salary = salary;
+        this.company = company;
+        this.location = location;
+    }
+
+    public void displayJobDetails() {
         System.out.println("Job Title: " + jobTitle);
         System.out.println("Company: " + company);
         System.out.println("Location: " + location);
         System.out.println("Salary: $" + salary);
     }
-}
 
-public class LAB_1 {
+    public void displaySalary() {
+        System.out.println("Salary: $" + salary);
+    }
+
+    public void displaySalary(String jobTitle) {
+        if (!this.jobTitle.equalsIgnoreCase(jobTitle)) {
+            System.out.println("Invalid job title");
+        } else {
+            System.out.println("Salary for " + jobTitle + " is $" + salary);
+        }
+    }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter the details of a job:");
-        System.out.print("Job Title: ");
-        String title = sc.nextLine();
-        System.out.print("Salary: $");
-        int salary = sc.nextInt();
-        sc.nextLine();  // get the newline 
-        System.out.print("Company: ");
-        String company = sc.nextLine();
-        System.out.print("Location: ");
-        String location = sc.nextLine();
-
-        Job job1 = new Job(title, salary, company, location);
+        System.out.println("\n\nDefault constructor");
+        LAB_1 job1 = new LAB_1();
         job1.displayJobDetails();
 
-        Job job2 = new Job();
+        System.out.println("\n\nConstructor overloading 1");
+        LAB_1 job2 = new LAB_1("Senior Software Engineer", 120000.0, "Tech Solutions", "San Francisco");
         job2.displayJobDetails();
 
+        System.out.println("\n\nConstructor overloading 2");
+        LAB_1 job3 = new LAB_1("Data Analyst", 85000, "Analytics Co", "Chicago");
+        job3.displayJobDetails();
 
+        System.out.println("\n\nMethod overloading");
+        job2.displaySalary();
+        job2.displaySalary("Senior Software Engineer");
     }
 }
