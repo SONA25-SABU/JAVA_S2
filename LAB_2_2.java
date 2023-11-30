@@ -1,4 +1,4 @@
-public class StringBuffMethod {
+ public class LAB_2_2 {
     // Write a Java program to create String using StringBuffer class and implement
     // the following methods .
     // 1. append()
